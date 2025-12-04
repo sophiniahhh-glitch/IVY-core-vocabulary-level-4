@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>常春藤核心字彙 Level 4 首頁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --primary: #1d4ed8;
+      --primary-soft: #bfdbfe;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --border-soft: #e5e7eb;
+      --shadow-soft: 0 22px 60px rgba(15, 23, 42, 0.18);
+      --radius-xl: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC",
+        system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top left, #eff6ff 0, #f5f7fb 40%, #e0f2fe 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 32px;
+      box-shadow: 0 28px 80px rgba(15, 23, 42, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(18px);
+      padding: 26px 26px 20px;
+    }
+
+    .card {
+      background: linear-gradient(135deg, #ffffff 0%, #eef2ff 45%, #eff6ff 100%);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(191, 219, 254, 0.95);
+      padding: 26px 24px 22px;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 18px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 11px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.08);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.18);
+    }
+
+    h1 {
+      font-size: 24px;
+      line-height: 1.5;
+      margin-bottom: 6px;
+      letter-spacing: 0.03em;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .chip {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(96, 165, 250, 0.9);
+      background: rgba(191, 219, 254, 0.4);
+      color: #1e3a8a;
+    }
+
+    .hint {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .level-tag {
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #1d4ed8, #1e293b);
+      color: #eff6ff;
+      font-weight: 600;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.35);
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: none;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--primary), #1e40af);
+      color: #eff6ff;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.5);
+      cursor: pointer;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+    }
+
+    .btn-main span.icon {
+      font-size: 15px;
+      transform: translateY(0.5px);
+    }
+
+    .btn-main:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 46px rgba(15, 23, 42, 0.55);
+      filter: brightness(1.05);
+    }
+
+    .btn-main:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.4);
+      filter: brightness(0.98);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      text-decoration: none;
+      background: rgba(248, 250, 252, 0.9);
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .btn-secondary span.icon {
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(203, 213, 225, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    @media (max-width: 780px) {
+      body {
+        padding: 18px;
+      }
+      .shell {
+        padding: 22px 18px 18px;
+        border-radius: 26px;
+      }
+      .card {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 20px 18px 18px;
+      }
+      .right {
+        align-items: flex-start;
+      }
+      .buttons {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 20px;
+      }
+      .subtitle {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="card" aria-label="常春藤核心字彙 Level 4 首頁">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>高中英文｜常春藤核心字彙</span>
+        </div>
+        <h1>常春藤核心字彙 Level 4</h1>
+        <p class="subtitle">
+          本頁為 <strong>常春藤核心字彙 Level 4</strong> 的簡約首頁，
+          採用柔和藍色系與大字體排版，適合長時間進行進階字彙的背誦與複習。
+        </p>
+        <div class="chips">
+          <span class="chip">Level 4 進階字彙專區</span>
+          <span class="chip">可搭配例句練習、測驗網頁使用</span>
+          <span class="chip">適用：學測高標／指考／英檢中高級</span>
+        </div>
+        <p class="hint">
+          建議：先將 Level 3 打底完成，再進入 Level 4，
+          並把常混淆的同義字與近義字整理成自己的對照表。
+        </p>
+      </div>
+      <div class="right">
+        <div class="level-tag">Vocabulary · Level 4</div>
+        <div class="buttons">
+          <a class="btn-main" href="level4_quiz.html">
+            <span>開始 Level 4 練習</span>
+            <span class="icon">➜</span>
+          </a>
+          <a class="btn-secondary" href="level4_wordlist.html">
+            <span class="icon">📄</span>
+            <span>查看單字列表（預留連結）</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <span>本頁為常春藤核心字彙 Level 4 首頁，可自行連結到練習網頁與單字列表。</span>
+      <span>設計重點：簡約 · 色彩舒服 · 易讀。</span>
+    </footer>
+  </div>
+</body>
+</html>
